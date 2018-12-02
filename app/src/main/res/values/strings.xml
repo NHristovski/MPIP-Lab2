@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MPIP_Lab2</string>
+    <string name="search_title">Search</string>
+    <string name="search_hint">Movie title</string>
+    <string name="creditToOMDb">Powered by OMDb API</string>
+    <string name="errorFetchingMoviesMessage">Error fetching movies. Please try again later.</string>
+    <string name="title">Title:</string>
+    <string name="released">Released:</string>
+    <string name="runtime">Runtime:</string>
+    <string name="director">Director:</string>
+    <string name="actors">Actors:</string>
+    <string name="plot">Plot:</string>
+</resources>

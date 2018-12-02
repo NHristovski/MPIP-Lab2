@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ui.DetailsActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:id="@+id/iv_details_poster"/>
+
+    <TextView
+        android:id="@+id/tv_details_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/title"
+        android:textSize="@dimen/details_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_details_poster" />
+
+    <TextView
+        android:id="@+id/tv_details_title_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="@dimen/details_text_size"
+        app:layout_constraintStart_toEndOf="@id/tv_details_title"
+        app:layout_constraintTop_toBottomOf="@id/iv_details_poster"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/tv_details_released"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/released"
+        android:textSize="@dimen/details_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_details_title" />
+
+    <TextView
+        android:id="@+id/tv_details_released_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        tools:text="Released"
+        android:textSize="@dimen/details_text_size"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_details_released"
+        app:layout_constraintStart_toEndOf="@+id/tv_details_released"
+        app:layout_constraintTop_toTopOf="@+id/tv_details_released" />
+
+    <TextView
+        android:id="@+id/tv_details_runtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/runtime"
+        android:textSize="@dimen/details_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_details_released" />
+
+    <TextView
+        android:id="@+id/tv_details_runtime_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        tools:text="Runtime"
+        android:textSize="@dimen/details_text_size"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_details_runtime"
+        app:layout_constraintStart_toEndOf="@+id/tv_details_runtime"
+        app:layout_constraintTop_toTopOf="@+id/tv_details_runtime" />
+
+    <TextView
+        android:id="@+id/tv_details_director"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/director"
+        android:textSize="@dimen/details_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_details_runtime" />
+
+    <TextView
+        android:id="@+id/tv_details_director_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="@dimen/details_text_size"
+        tools:text="Director"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_details_director"
+        app:layout_constraintStart_toEndOf="@+id/tv_details_director"
+        app:layout_constraintTop_toTopOf="@+id/tv_details_director" />
+
+    <TextView
+        android:id="@+id/tv_details_actors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/actors"
+        android:textSize="@dimen/details_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_details_director" />
+
+    <TextView
+        android:id="@+id/tv_details_actors_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="@dimen/details_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_details_actors"
+        tools:text="Actors" />
+
+    <TextView
+        android:id="@+id/tv_details_plot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/plot"
+        android:textSize="@dimen/details_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_details_actors_value" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_details_plot">
+
+        <TextView
+            android:id="@+id/tv_details_plot_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="@dimen/details_text_size"
+            tools:text="Plot" />
+
+    </ScrollView>
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>
