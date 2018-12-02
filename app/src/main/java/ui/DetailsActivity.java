@@ -64,11 +64,18 @@ public class DetailsActivity extends AppCompatActivity {
 
     private void findViews() {
         actors = findViewById(R.id.tv_details_actors_value);
+
         plot = findViewById(R.id.tv_details_plot_value);
+        plot.setMovementMethod(new ScrollingMovementMethod());
+
         runtime = findViewById(R.id.tv_details_runtime_value);
+
         director = findViewById(R.id.tv_details_director_value);
+
         released = findViewById(R.id.tv_details_released_value);
+
         title = findViewById(R.id.tv_details_title_value);
+        
         moviePoster = findViewById(R.id.iv_details_poster);
     }
 
@@ -78,7 +85,6 @@ public class DetailsActivity extends AppCompatActivity {
         actors.setText(detailedMovieItem.getActors());
 
         plot.setText(detailedMovieItem.getPlot());
-        plot.setMovementMethod(new ScrollingMovementMethod());
 
         runtime.setText(detailedMovieItem.getRuntime());
 

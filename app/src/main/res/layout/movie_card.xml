@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/tv_movie_title"
-            android:layout_width="142dp"
+            android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:textSize="@dimen/movie_title_size"

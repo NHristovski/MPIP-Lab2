@@ -3,9 +3,11 @@ package ui;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -30,13 +32,21 @@ import data.movie.SearchResult;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String PAGE_KEY = "page";
+    private static final String ALL_MOVIES_KEY = "all_movies";
+
     public static final String EXTRA_IMDB_ID = "imdbID";
     public static final String TAG = "Nikola";
     public static final int FIRST_PAGE = 1;
     public static final int DOWN = 1;
+    public static final String QUERY_KEY = "queryKey";
+    public static final String TOTAL_RESULTS_KEY = "total";
+    public static final int SPAN_COUNT = 2;
+
     private RecyclerView mRecyclerView;
     private OMDbService mOMDbService;
     private MovieAdapter mMovieAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     private String query;
     private int page;
@@ -47,12 +57,48 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE){
+            layoutManager = new GridLayoutManager(this, SPAN_COUNT);
+        }else{
+            layoutManager = new LinearLayoutManager(this);
+        }
+
+        if(savedInstanceState == null) {
+            initRecyclerView(new ArrayList<>(),layoutManager);
+
+            page = 1;
+            query = "";
+            totalResults = 0;
+
+        }else{
+            final ArrayList<String> movies =
+                    savedInstanceState.getStringArrayList(ALL_MOVIES_KEY);
+
+            List<MovieItem> movieItems = new ArrayList<>(movies.size());
+
+            for(String movie : movies){
+                movieItems.add(MovieItem.fromString(movie));
+            }
+
+            initRecyclerView(movieItems,layoutManager);
+
+            page = savedInstanceState.getInt(PAGE_KEY);
+            query = savedInstanceState.getString(QUERY_KEY);
+            totalResults = savedInstanceState.getInt(TOTAL_RESULTS_KEY);
+        }
+
+        mOMDbService = OMDbServiceSingleton.getService();
+    }
+
+    private void initRecyclerView(List<MovieItem> movieItems, RecyclerView.LayoutManager layoutManager) {
+
         mRecyclerView = findViewById(R.id.rv_list);
         mRecyclerView.setHasFixedSize(true);
-        final RecyclerView.LayoutManager linerLayoutMenager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(linerLayoutMenager);
 
-        mMovieAdapter = new MovieAdapter(this, new ArrayList<>(),this);
+        mRecyclerView.setLayoutManager(layoutManager);
+
+        mMovieAdapter = new MovieAdapter(this, movieItems, this);
         mRecyclerView.setAdapter(mMovieAdapter);
 
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -60,17 +106,11 @@ public class MainActivity extends AppCompatActivity {
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
-                if(!recyclerView.canScrollVertically(DOWN)){
+                if (!recyclerView.canScrollVertically(DOWN)) {
                     addNewItemsToAdapter();
                 }
             }
         });
-
-        mOMDbService = OMDbServiceSingleton.getService();
-
-        page = 1;
-        query = "";
-        totalResults = 0;
     }
 
     private void addNewItemsToAdapter() {
@@ -186,4 +226,23 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        final List<MovieItem> movieItemList = mMovieAdapter.getMovieItemList();
+        ArrayList<String> movies = new ArrayList<>(movieItemList.size());
+
+        for(MovieItem movieItem : movieItemList){
+            movies.add(movieItem.toString());
+        }
+
+        outState.putStringArrayList(ALL_MOVIES_KEY,movies);
+
+        outState.putString(QUERY_KEY,query);
+
+        outState.putInt(TOTAL_RESULTS_KEY,totalResults);
+
+        outState.putInt(PAGE_KEY,page);
+
+        super.onSaveInstanceState(outState);
+    }
 }

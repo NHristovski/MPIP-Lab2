@@ -17,6 +17,7 @@ import com.example.mpip_lab2.R;
 import ui.MainActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import data.movie.MovieItem;
@@ -66,6 +67,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public void clear(){
         this.movieItemList.clear();
         notifyDataSetChanged();
+    }
+
+    public List<MovieItem> getMovieItemList() {
+        return Collections.unmodifiableList(movieItemList);
     }
 
     public static class MovieViewHolder extends RecyclerView.ViewHolder{
