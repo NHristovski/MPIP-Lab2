@@ -1,24 +1,38 @@
 package data.movie;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "movie")
 public class MovieItem {
 
+
+    @ColumnInfo(name = "photoUrl")
     @SerializedName("Poster")
     private String photoUrl;
 
+    @PrimaryKey
+    @NonNull
     @SerializedName("imdbID")
     private String imdbId;
 
+    @ColumnInfo(name = "title")
     @SerializedName("Title")
     private String title;
 
+    @ColumnInfo(name = "year")
     @SerializedName("Year")
     private String year;
 
+    @Ignore
     public MovieItem(){}
 
-    public MovieItem(String photoUrl, String imdbId, String title, String year) {
+    public MovieItem(String photoUrl, @NonNull String imdbId, String title, String year) {
         this.photoUrl = photoUrl;
         this.imdbId = imdbId;
         this.title = title;

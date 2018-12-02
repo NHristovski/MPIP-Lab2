@@ -1,33 +1,30 @@
 package data.movie;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "detailed_movie")
 public class DetailedMovieItem extends MovieItem {
 
-//    @SerializedName("Poster")
-//    private String photoUrl;
-//
-//    private String imdbId;
-//
-//    @SerializedName("Title")
-//    private String title;
-//
-//    @SerializedName("Year")
-//    private String year;
-
-
+    @ColumnInfo(name = "released")
     @SerializedName("Released")
     private String released;
 
+    @ColumnInfo(name = "runtime")
     @SerializedName("Runtime")
     private String runtime;
 
+    @ColumnInfo(name = "director")
     @SerializedName("Director")
     private String director;
 
+    @ColumnInfo(name = "plot")
     @SerializedName("Plot")
     private String plot;
 
+    @ColumnInfo(name = "actors")
     @SerializedName("Actors")
     private String actors;
 
@@ -44,45 +41,6 @@ public class DetailedMovieItem extends MovieItem {
         this.actors = actors;
     }
 
-//    @Override
-//    public String getPhotoUrl() {
-//        return photoUrl;
-//    }
-//
-//    @Override
-//    public void setPhotoUrl(String photoUrl) {
-//        this.photoUrl = photoUrl;
-//    }
-//
-//    @Override
-//    public String getImdbId() {
-//        return imdbId;
-//    }
-//
-//    @Override
-//    public void setImdbId(String imdbId) {
-//        this.imdbId = imdbId;
-//    }
-//
-//    @Override
-//    public String getTitle() {
-//        return title;
-//    }
-//
-//    @Override
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
-//
-//    @Override
-//    public String getYear() {
-//        return year;
-//    }
-//
-//    @Override
-//    public void setYear(String year) {
-//        this.year = year;
-//    }
 
     public String getReleased() {
         return released;
@@ -100,7 +58,6 @@ public class DetailedMovieItem extends MovieItem {
         this.runtime = runtime;
     }
 
-
     public String getDirector() {
         return director;
     }
@@ -116,7 +73,6 @@ public class DetailedMovieItem extends MovieItem {
     public void setPlot(String plot) {
         this.plot = plot;
     }
-
 
     public String getActors() {
         return actors;

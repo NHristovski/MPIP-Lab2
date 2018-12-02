@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import data.movie.MovieItem;
-
 public class SearchResult {
 
     @SerializedName("Search")
@@ -21,7 +19,10 @@ public class SearchResult {
     }
 
     public List<MovieItem> getMovieItemList() {
-        return Collections.unmodifiableList(movieItemList);
+        if (movieItemList != null) {
+            return Collections.unmodifiableList(movieItemList);
+        }
+        return null;
     }
 
     public void setMovieItemList(List<MovieItem> movieItemList) {

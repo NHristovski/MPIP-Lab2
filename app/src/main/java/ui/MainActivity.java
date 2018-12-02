@@ -17,8 +17,10 @@ import android.widget.Toast;
 import com.example.mpip_lab2.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import data.adapter.MovieAdapter;
+import data.movie.MovieItem;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -72,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addNewItemsToAdapter() {
-        Log.i(TAG,"SE POVIKA ADD NEW ITEMS");
         Log.i(TAG,"Adapter items: " + mMovieAdapter.getItemCount() + " and total results: " + totalResults);
+
         if (mMovieAdapter.getItemCount() < totalResults){
             page++;
             Log.i(TAG,"Page now: " + page);
@@ -85,8 +87,11 @@ public class MainActivity extends AppCompatActivity {
 
                         if (searchResult != null) {
 
-                            mMovieAdapter.addData(searchResult.getMovieItemList());
-                            mMovieAdapter.notifyDataSetChanged();
+                            final List<MovieItem> dataToAdd = searchResult.getMovieItemList();
+                            if(dataToAdd != null) {
+                                mMovieAdapter.addData(dataToAdd);
+                                mMovieAdapter.notifyDataSetChanged();
+                            }
                         }
                     }
                     else{
