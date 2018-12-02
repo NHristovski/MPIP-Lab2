@@ -19,7 +19,7 @@ import ui.MainActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import data.MovieItem;
+import data.movie.MovieItem;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 

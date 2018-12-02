@@ -1,4 +1,4 @@
-package service;
+package data.movie;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import data.MovieItem;
+import data.movie.MovieItem;
 
 public class SearchResult {
 

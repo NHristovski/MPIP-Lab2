@@ -10,14 +10,13 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mpip_lab2.R;
 
-import data.DetailedMovieItem;
+import data.movie.DetailedMovieItem;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import service.OMDbService;
 
 import service.OMDbServiceSingleton;
-import ui.MainActivity;
 
 public class DetailsActivity extends AppCompatActivity {
 

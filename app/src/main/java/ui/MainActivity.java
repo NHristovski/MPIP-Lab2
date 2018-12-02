@@ -24,7 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import service.OMDbService;
 import service.OMDbServiceSingleton;
-import service.SearchResult;
+import data.movie.SearchResult;
 
 public class MainActivity extends AppCompatActivity {
 
